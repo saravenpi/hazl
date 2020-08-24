@@ -1,0 +1,157 @@
+<script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+  
+localStorage.setItem('token', "<%= user.token %>");
+                     /* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function guilddropdown() {
+ 
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+
+$(function() {
+var channel_id = window.localStorage.getItem("channel_id");
+  
+  var socket = io();
+  
+/*socket.on('connect', function() {
+   socket.emit('room', channel_id);
+});*/
+
+       socket.on("loadhist", function(author, pp, msg, id){
+     messaged(author, pp, msg, id);
+    
+
+  });
+  
+  function messaged(author, pp, msg, id) {
+      $("#messages").append("<div class='card message is-centered' id='" + id + "'><div class='card-content'><div class='media'>" +
+                                    "<div class='media-left'><figure class='image is-48x48'>" +
+          "<img class='image is-48x48' src='"
+          + pp + "' alt='Placeholder image'>" + "</figure></div><div class='media-content'>"+
+                                    "<p class='title is-4'>" + author + "</p><p class='subtitle is-6'>"+
+                      "<a href='/profile/" + author + "'>@" + author + "</a></p></div></div><div class='content'>"+
+        msg + "<br></div></div></div></br>")
+    window.scrollTo({
+      left: 0,
+      top: document.getElementById("messages").scrollHeight,
+      behavior: "smooth"
+    });
+  
+  };
+  
+  
+   
+  
+  
+  socket.on("message", function(author, pp, msg, id){
+  messaged(author, pp, msg, id); 
+     
+  });
+  
+  
+
+  
+  
+  
+  /*/
+  /  Load the channels
+  /*/
+  
+      <% guilds.forEach(function(guild) { %>
+      $.get("/api/guilds/<%= guild %>", function( data ) {
+      
+      $("#guilds-container").append("<div class='card guild' id='" + data.id + "'><div class='card-content'><div class='media'>" +
+                                    "<div class='media-left'><figure class='image is-48x48'>" +
+          "<img class='image is-48x48' src='"
+          + data.icon + "' alt='Placeholder image'>" + "</figure></div><div class='media-content'>"+
+                                    "<p class='title is-4'>" + data.name + "</p><p class='subtitle is-6'>"+
+                      "<a>" + data.name + "</a></p></div></div><div class='content'>"+
+        data.description + "<br></div></div></div></br>")
+          
+      });
+    <% }) %>
+      
+      
+  $("#messageform").submit(function() {
+    if (
+      $("#m")
+        .val()
+        .replace(/ /g, "").length < 1
+    )
+      return false;
+    socket.emit("message", $("#m").val(), window.localStorage.getItem("token"), window.localStorage.getItem("channel_id"));
+    $("#m").val("");
+    return false;
+  });
+  
+ 
+  
+$(document).on('click', '.guild', function () {
+  
+   $("#guildsexplorermodal").hide();
+        var guild_id = $(this).attr("id");
+  socket.emit('guildroom', guild_id);
+       $("main").empty();
+        $("#channels").empty();
+      $("#messageform").hide();
+        
+       $("#sidenav").css("display","block");
+        $("#messages").empty();
+       $(".guild").each(function (index) {
+         $(this).removeClass("is-active")
+       })
+       $(this).addClass("is-active")
+  
+   $.get("/api/guilds/" + guild_id , function(data) {
+  var guild = data;
+  
+  var channels = guild.channels;
+     
+       $("#channels").append("<br><span><h1 class='menu-label' style='margin:20px; font-size:30px;'>" + data.name + "</h1></span><span style='margin:20px;'><button onclick='guilddropdown()' class='dropbtn'><i class='fas fa-cogs'></i></button></span>"+
+                            " <div style='margin-left:20px;' id='myDropdown' class='dropdown-content'>"+
+    "<a id='leaveguild'>Leave Guild</a>"+
+  "<a id='addchannel'>Add Channel</a>"+
+    "<a id='guildsettings'>Settings</a></div>")
+     
+    
+ 
+     
+     
+      $("#channels").append("<p class='menu-label' style='margin:20px; font-size:15px;'>Guild ID:</p><div style='overflow: scroll; margin:20px;' id='guildid'>" + data.id + "</div>")
+      $("#channels").append("<br><p class='menu-label' style='margin:20px; font-size:15px;'>Channels:</p>");
+     
+  channels.map(channel => {
+    $.get("/api/channels/" + channel, function(channel_data) {
+      
+      var name = "#" + channel_data.name
+       $("#channels").append("<a id='" + data.id + "' class='channel'>" + name + "</a>");
+    })
+  });
+   });
+});   
+  
+  
+    /*socket.on("loadchannels", function(name, id){
+        $("#channels").append("<a id='" + id + "' class='channel'>" + name + "</a>");
+
+     
+  });
+  */
+  $(document).on('click', '.channel', function () {
+    
+    var channel_id = $(this).attr("id");
+    window.localStorage.setItem("channel_id", channel_id);
+    $("#messages").empty();
+    $("#messages").fadeIn();
+    $("#messageform").fadeIn();
+    
+     $("#messages").empty();
+    socket.emit('room', channel_id);
+    
+  });
+  })();
+</script>

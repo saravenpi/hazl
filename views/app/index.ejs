@@ -1,0 +1,128 @@
+<html>
+  <head>
+    
+    <%- include("/app/public/ressources/style/index.ejs") %>
+    <style>
+    <%- include("/app/public/ressources/style/css/index.css") %>
+    </style>
+    <title>Hazl App</title>
+  </head>
+  <body>
+    
+    <div class="sidenav" id="sidenav" style="display:none;">
+  <aside class="menu">
+  <div class="container" id="channels">
+</div>
+  </aside>
+</div>  
+   
+    
+    <nav class="navbar navvvv" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+     <div class="navbar-item">
+    <a class="navbar-item button"  href="/app">
+     <i class="fas fa-arrow-left"></i>
+    </a>
+    </div>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    
+    <div class="navbar-start scrooll" id="guilds">
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a id="addaguildbutton" class="button is-primary">
+            <strong><i class="fas fa-plus-square"></i></strong>
+          </a>
+           <a id="guildsexplorer" class="button">
+                 <i class="far fa-compass"></i>
+            
+          </a>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+     </br>
+  </br>
+    
+    <main>
+    <br>
+    
+    <div class="container">
+
+    <div class="card">
+
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <img class="is-rounded" src="<%= user.pp %>" alt="Placeholder image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4"><%= user.username %></p>
+        <p class="subtitle is-6"><a href="/profile/<%= user.username %>">@<%= user.username %></a></p>
+      </div>
+      
+       <div class="buttons">
+         <button id="settings" class="button"><i class="fas fa-sliders-h"></i></button>
+  <button onclick="window.location='/logout'" class="button is-primary">Logout</button>
+     </div>
+    </div>
+
+    
+ 
+  </div>
+</div>
+            
+    </div>
+    <br>
+     <div class="container is-fullhd">
+      
+  <!-- <div class="notification ">
+  
+    <p class="title is-1">
+      Coming Soon: Posts Timeline🍜</p>
+     
+    </div>
+  
+    </div>-->
+    </main>
+    
+    <div class="container messages-container" id="messages" style="display:none;">
+      
+      
+    </div>
+   <div class="container">
+      <form style="display:none;" id="messageform">
+     <div class="field">
+  <div class="control">
+    <input id="m" class="input is-primary" type="text" placeholder="Send a message..."  autocomplete="off" required/>
+  </div>
+     </div>
+    </form>
+    
+    </div>
+  
+  
+    
+ 
+    
+     <%- include("/app/views/app/modals/index.ejs") %>
+     <%- include("/app/views/app/scripts/app.ejs") %>
+  </body>
+  
+</html>
+
+

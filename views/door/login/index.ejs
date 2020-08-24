@@ -1,0 +1,60 @@
+<html>
+<head>
+  <title>🚪</title>
+  <%- include("/app/public/ressources/style/index.ejs") %>
+
+  </head>
+  <body>
+  <%- include("/app/public/ressources/elements/navbar.ejs") %>
+    <br>
+<div class="container is-fullhd">
+  <div class="notification">
+   <p class="title is-1">
+      <img class="image is-128x128" src="https://cdn.glitch.com/cd441c7f-4758-44d8-96a5-9f223a9d3cc5%2FCopy%20of%20hazl%20(1).png?v=1586289248588">
+     </p>
+<p class="subtitle is-3">Login into Hazl:</p>
+  </div>
+  
+    </div>
+    <br>
+    <div class="container">
+      <div class="section">
+        
+     
+        <form method="POST" action="./login">
+  <div class="field">
+  <p class="control has-icons-left has-icons-right">
+    <input class="input" type="email" name="email" placeholder="Email">
+    <span class="icon is-small is-left">
+      <i class="fas fa-envelope"></i>
+    </span>
+  
+  </p>
+</div>
+<div class="field">
+  <p class="control has-icons-left">
+    <input class="input" type="password" name="password" placeholder="Password">
+    <span class="icon is-small is-left">
+      <i class="fas fa-lock"></i>
+    </span>
+  </p>
+</div>
+<div class="field">
+  <p class="control">
+    <button class="button is-success">
+      Login
+    </button>
+  </p>
+</div>
+      </form>
+         </div>
+   </div>
+    
+    <br>
+   
+
+ 
+  
+   
+  </body>
+</html>

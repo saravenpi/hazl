@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title><% if(user !== undefined) { %><%= user.username %><% } else { %>User not found<% } %> | Hazl App</title>
+    <%- include("/app/public/ressources/style/index.ejs") %>
+       <meta
+      property="og:description"
+      content="<% if(user !== undefined) { %><%= user.bio %><% } else { %>User not found<% } %> "
+    />
+    <meta property="og:title" content="<% if(user !== undefined) { %><%= user.username %><% } else { %>Non-existent user<% } %> " />
+    <meta
+      property="og:image"
+      content="<% if(user !== undefined) { %><%= user.pp %><% } else { %>https://i.stack.imgur.com/34AD2.jpg<% } %>"
+    />
+  </head>
+  <body>
+    <%- include("/app/public/ressources/elements/navbar.ejs") %>
+    <br>
+    <div class="container">
+<div class="card">
+  <div class="card-image">
+    <figure class="image is-fullwidth">
+      <img src="https://i.imgur.com/7lJRtfB.png" alt="Placeholder image">
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+         <img class="is-rounded" src="<% if(user !== undefined) { %><%= user.pp %><% } else { %>https://i.stack.imgur.com/34AD2.jpg<% } %>" alt="Placeholder image">
+        </figure>
+      </div>
+      <div class="media-content">
+         <p class="title is-4"><% if(user !== undefined) { %><%= user.username %><% } else { %>User not found<% } %></p>
+        <p class="subtitle is-6">@<% if(user !== undefined) { %><%= user.username %><% } else { %>User not found<% } %></p>
+     
+      </div>
+    </div>
+
+    <div class="content">
+      <% if(user !== undefined) { if(user.bio !== undefined) { %><%= user.bio %><% } else { %>An anonymous user.<% } } else { %>An anonymous user.<% } %></p>
+
+    </div>
+  </div>
+</div>
+            
+    </div>
+    <br>
+    
+    
+ 
+    
+
+  </body>
+  
+</html>
+
+

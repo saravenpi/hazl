@@ -1,0 +1,183 @@
+
+<html>
+  <head>
+        
+    <%- include("/app/public/ressources/style/index.ejs") %>
+<title>Hazl</title>
+       <meta
+      name="description"
+      content="Change your way to communicate"
+    />
+    <meta property="og:type" content="music.radio_station" />
+    <meta property="og:title" content="Hazl" />
+    <meta property="og:url" content="https://hazl.glitch.me" />
+    <meta
+      property="og:image"
+      content="https://cdn.glitch.com/cd441c7f-4758-44d8-96a5-9f223a9d3cc5%2FCopy%20of%20hazl.png?v=1586296665489"
+    />
+        <meta name="twitter:title" content="Hazl" />
+    <meta
+      name="twitter:description"
+      content="Change your way to communicate!"
+    />
+  </head>
+  <body>
+  
+ 
+    
+    
+    <section class="hero is-fullheight is-primary is-bold">
+        <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item">
+            <img src="https://cdn.glitch.com/cd441c7f-4758-44d8-96a5-9f223a9d3cc5%2Fbig%20hazl.png?v=1586974187028" alt="Logo">
+          </a>
+          <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenuHeroA" class="navbar-menu">
+          <div class="navbar-end">
+          <!--  <a class="navbar-item is-active">
+              Home
+            </a>
+            <a class="navbar-item">
+              Examples
+            </a>
+            <a class="navbar-item">
+              Documentation
+            </a>-->
+            
+               <% if(!user.username){ %>
+               <span class="navbar-item">
+  <a class="button is-primary" href="/door/register">
+            <strong>Register</strong>
+          </a></span>
+            <span class="navbar-item">
+          <a class="button is-light" href="/door/login">
+            Log in
+          </a>
+          </span>
+  <%  } else { %>
+  <span class="navbar-item">
+<a class="button is-primary" href="/app">
+            <strong>Open</strong>
+          </a>
+          </span>
+          
+  <% } %>
+            </span>
+           
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <center><img class="image is-128x128 is-centered centered" src="https://cdn.glitch.com/cd441c7f-4758-44d8-96a5-9f223a9d3cc5%2FCopy%20of%20hazl%20(1).png?v=1586289248588">
+    </center>
+        <p class="title is-1">
+      Hazl</p>
+<p class="subtitle is-3">Say goodbye to Discord, Teamspeak or Slack</p>
+   <div class="buttons is-centered">
+  <button class="button is-primary" onclick="window.location='<% if(!user.username){ %>/door<% } else {%>/app<% } %>'">Get Started</button>
+  
+    </div>
+      </div>
+    </section>
+    <div class="container">
+      <div class="section">
+        <p class="subtitle is-3">What is Hazl</p>
+        <div class="content">
+       <p class="is-large">
+         Hazl is a communication app, on all your devices. All your personnal informations are going nowhere. It is a place that respect you, and your privacy.
+        </p>
+        </div>
+        
+      </div>
+      
+      <div class="notification">
+        <p class="title is-2">
+          Hazl Team:
+        </p>
+        <div class="content">
+          
+        <p class="is-large">
+         Hazl is a communication app available on all your devices. All your personnal informations aren't going anywhere. It is a place that respects you, and your privacy.
+        </p>
+          
+        </div>
+        <div class="card">
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <img class="image is-48x48" src="https://thatoddperspective.files.wordpress.com/2014/11/eating-alone.gif" alt="Placeholder image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4">Saravenpi</p>
+        <p class="subtitle is-6"><a href="https://twitter.com/saravenpi">@saravenpi</a></p>
+      </div>
+    </div>
+
+    <div class="content">
+         Developer and CEO of Hazl, noodles lover 🍜 <a href="https://twitter.com/hazlapp">@hazlapp</a>.
+      <a href="#">#dev</a> <a href="#">#css</a>
+      <br>
+   
+    </div>
+  </div>
+</div> 
+       <br> <div class="card">
+  
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <img src="https://cdn.glitch.com/cd441c7f-4758-44d8-96a5-9f223a9d3cc5%2Fryuuen.jpg?v=1586290270494" alt="Placeholder image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4">Bobbie</p>
+        <p class="subtitle is-6"><a href="https://twitter.com/elchadcel">@elchadcel</a></p>
+      </div>
+    </div>
+
+    <div class="content">
+    Developer and CEO of Hazl. An ethical hacker, and bug hunter <a href="https://twitter.com/hazlapp">@hazlapp</a>.
+      <a href="#">#dev</a> <a href="#">#hacker</a>
+      <br>
+      
+    </div>
+  </div>
+</div>
+        
+        
+        
+     </div>
+        
+      
+         </div>
+    <br>
+    <footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>Hazl</strong> by <a href="https://twitter.com/hazlapp">Saravenpi and Bobbie</a>. <br>The source code is licensed
+      <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+      is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+      
+    </p>
+  </div>
+</footer>
+    
+    
+    
+
+  </body>
+</html>

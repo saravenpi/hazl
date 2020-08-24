@@ -1,0 +1,277 @@
+<div id="modalsettings" class="modal"  style="display:none;">
+  <form id="configform" method="POST" action="/config">
+    <div class="modal-background"></div>
+    <div class="modal-card centromax">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Config pannel</p>
+        <p id="closesettings" class="delete" aria-label="close"></p>
+      </header>
+      <section class="modal-card-body">
+       <div class="container">
+         <div class="section">
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Username :</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control">
+                  <input class="input" type="text" name="user[username]" value="<%= user.username %>" required>
+                </p>
+              </div>
+            </div>
+          </div>
+         
+     
+         
+
+<!--<div id="file-js-example" class="field is-horizontal">
+         <div class="field-label is-normal">
+            <label class="label">Avatar :</label>
+          </div>
+  <div class="field-body">
+      <div class="file is-primary">
+    <label class="file-label">
+      <input class="file-input" type="file" accept="image/*" name="user[avatar]">
+      <span class="file-cta">
+        <span class="file-icon">
+          <i class="fas fa-upload"></i>
+        </span>
+        <span class="file-label">
+          Choose a file...
+        </span>
+        
+      </span>
+          <span class="file-name">
+      No file uploaded
+    </span>
+    </label>
+  </div>
+  </div>
+</div>-->
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Bio :</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+  <div class="control">
+    <textarea class="textarea" form="configform" name="user[bio]" id="bio" placeholder="Max 200 of lenght" maxlength="200" required><%= user.bio %></textarea>
+     </div>
+          </div>
+  </div>
+</div>
+     
+         
+            <!--<div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Password :</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control">
+                <input class="input" type="password" name="user[password]" placeholder="******">
+              </p>
+            </div>
+          </div>
+        </div>
+         
+         
+         <script>
+  const fileInput = document.querySelector('#file-js-example input[type=file]');
+  fileInput.onchange = () => {
+    if (fileInput.files.length > 0) {
+      const fileName = document.querySelector('#file-js-example .file-name');
+      fileName.textContent = fileInput.files[0].name;
+    }
+  }
+</script>-->
+
+       </div>
+         
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button id="savesettings" class="button is-success" type="submit">Save changes</button>
+      <p  id="closesettings" class="button cancel">Cancel</p>
+    </footer>
+  </div>
+           </form>
+</div>
+
+
+    <div id="modalguild" class="modal" style="display:none;">
+  <div class="modal-background"></div>
+  <div class="modal-card centromax">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Add a guild</p>
+      <p id="addaguildclose" class="delete" aria-label="close"></p>
+    </header>
+    <section class="modal-card-body">
+ <div class="buttons">
+   <span id="createaguild" class="button is-primary">
+     Create a guild
+   </span>
+    <span id="joinaguild" class="button is-primary">
+     Join a guild
+   </span>
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      
+      <p id="addaguildclose" class="button cancel">Cancel</p>
+    </footer>
+  </div>
+</div>
+    
+    
+    <div id="modalcreateguild" style="display:none">
+      <form action="/createguild" method="POST">
+          <div class="modal-background"></div>
+  <div class="modal-card centromax">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Create a guild</p>
+      <p id="createaguildclose" class="delete" aria-label="close"></p>
+    </header>
+    <section class="modal-card-body">
+     <div class="field">
+  <label class="label">Guild Name</label>
+  <div class="control">
+    <input class="input" name="guild[name]" type="text" placeholder="Enter a guild name" value="<%= user.username %>'s guild" required>
+  </div> 
+</div>
+    </section>
+    <footer class="modal-card-foot">
+     <button type="submit" id="createevent" class="button is-success">Create</button>
+      <input style="display:none" type="hidden" name="user[token]" value="<%= user.token %>">
+      <p id="createaguildclose" class="button cancel">Cancel</p>
+    </footer>
+  </div>
+      </form>
+</div>
+    
+    
+    
+    <div id="modaljoinguild" class="modal" style="display:none;">
+      <form action="/joinguild" method="POST">
+  <div class="modal-background"></div>
+  <div class="modal-card centromax">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Join Guild</p>
+      <p id="joinaguildclose" class="delete" aria-label="close"></p>
+    </header>
+    <section class="modal-card-body">
+      <div class="field">
+  <label class="label">Guild ID</label>
+  <div class="control">
+    <input  name="guild[id]"  class="input" type="text" placeholder="Enter guild id" required>
+  </div>
+  
+</div>
+    </section>
+    <footer class="modal-card-foot">
+       <input style="display:none" type="hidden" name="user[token]" value="<%= user.token %>">
+      <button type="submit"  id="joinevent" class="button is-success">Join</button>
+     
+    </footer>
+  </div>
+      </form>
+</div>
+    
+
+
+
+
+
+
+ 
+   <div class="modal" id="guildsexplorermodal">
+  <div class="modal-background"></div>
+  <div class="modal-card centromax">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Guilds List</p>
+      <p class="delete" aria-label="close" id="guildsdexplorerclose"></p>
+    </header>
+    <section class="modal-card-body" id="guilds-container">
+      <!-- Content ... -->
+    </section>
+    <footer class="modal-card-foot">
+    <!--Server Lists-->
+    </footer>
+  </div>
+</div>
+
+
+    
+
+    
+   <script>
+    $(function() {
+     
+      $(".cancel").click(function() {
+        $(this).parent().parent().parent().css("display","none")
+      });
+      
+      $("#guildsexplorer").click(function(){
+         $("#guildsexplorermodal").fadeIn();
+       });
+      
+      
+      
+      $("#guildsdexplorerclose").click(function(){
+         $("#guildsexplorermodal").fadeOut();
+       });
+      
+      
+      $("#settings").click(function(){
+
+  $("#modalsettings").fadeIn()
+       
+      });
+      
+      /*$("#savesettings").click(function() {
+        $("#modalsettings").fadeOut();
+      })*/
+      
+  $("#closesettings").click(function(){
+    
+   $("#modalsettings").fadeOut();
+  
+  });
+      
+  
+      
+      
+       $("#addaguildbutton").click(function(){
+         $("#modalguild").fadeIn();
+       });
+      
+      $("#addaguildclose").click(function(){
+         $("#modalguild").fadeOut();
+       });
+      
+       $("#createaguild").click(function(){
+         $("#modalguild").fadeOut();
+          $("#modalcreateguild").fadeIn();
+       });
+      
+       $("#joinaguild").click(function(){
+         $("#modalguild").fadeOut();
+          $("#modaljoinguild").fadeIn();
+       });
+      
+      
+        $("#joinaguildclose").click(function(){
+            $("#modaljoinguild").fadeOut();
+            $("#modalguild").fadeIn();
+        });
+      
+       $("#createaguildclose").click(function(){
+            $("#modalcreateguild").fadeOut();
+           $("#modalguild").fadeIn();
+        });
+      
+      
+    
+    });
+    </script>
